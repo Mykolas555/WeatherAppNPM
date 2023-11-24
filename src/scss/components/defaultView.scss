@@ -1,0 +1,48 @@
+@import 'mixins/defaultCityContainer';
+@import 'mixins/defaultCityName';
+@import 'mixins/defaultCityTime';
+@import 'mixins/defaultCityForecatImage';
+@import 'mixins/defaultCityWeatherCondition';
+@import 'mixins/defaultCityTemperature';
+@import 'mixins/defaultCityCountry';
+
+.defaultCitys{
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 575.98px) {
+  .row{
+    display: block
+  }
+}
+
+.defaultCity__container {
+    @include defaultCityContainer;
+    .container__top {
+        .top__name {
+            @include defaultCityName;
+      }
+        .top__time {
+        @include defaultCityTime;
+      }
+    }
+    .container__middle {
+        .middle__forecastImage {
+            @include defaultCityForecatImage;
+      }
+        .middle__weatherCondition {
+            @include defaultCityWeatherCondition;
+      }
+    }
+    .container__bottom {
+        .bottom__temperature {
+            @include defaultCityTemperature;
+      }
+        .bottom__country {
+            @include defaultCityCountry;
+      }
+    }
+  }

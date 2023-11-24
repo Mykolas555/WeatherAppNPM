@@ -1,0 +1,8 @@
+@mixin defaultCityTime{
+    color: var(--light-70, rgba(255, 255, 255, 0.68));
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}

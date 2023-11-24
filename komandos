@@ -1,0 +1,3 @@
+npm i bootstrap
+npx mix
+npx mix watch
