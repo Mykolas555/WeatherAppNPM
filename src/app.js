@@ -1,4 +1,4 @@
-import renderInputCity from "./modules/renderInputCity";
+import renderInputCity from "./modules/inputModules/renderInputCity";
 import renderDefaultCitys from "./modules/renderDefaultCitys";
 
 renderInputCity();
