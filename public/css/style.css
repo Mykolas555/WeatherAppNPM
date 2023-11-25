@@ -12006,6 +12006,7 @@ body {
   justify-content: center;
   background: red;
   font-size: 2rem;
+  font-family: Inter, sans-serif;
 }
 
 .defaultCitys {
@@ -12035,7 +12036,7 @@ body {
 }
 .defaultCity__container .container__top .top__name {
   color: #FFF;
-  font-family: PingFang SC;
+  font-family: Kanit, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -12064,7 +12065,7 @@ body {
 }
 .defaultCity__container .container__bottom .bottom__temperature {
   color: rgba(255, 255, 255, 0.68);
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -12072,7 +12073,7 @@ body {
 }
 .defaultCity__container .container__bottom .bottom__country {
   color: rgba(255, 255, 255, 0.68);
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
