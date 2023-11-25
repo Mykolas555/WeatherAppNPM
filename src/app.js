@@ -1,5 +1,5 @@
 import renderInputCity from "./modules/inputModules/renderInputCity";
-import renderDefaultCitys from "./modules/renderDefaultCitys";
+import fetchCityData from "./modules/fetchCityData";
 
 renderInputCity();
-renderDefaultCitys();
+fetchCityData();

@@ -10,11 +10,11 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_inputModules_renderInputCity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/inputModules/renderInputCity */ "./src/modules/inputModules/renderInputCity.js");
-/* harmony import */ var _modules_renderDefaultCitys__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/renderDefaultCitys */ "./src/modules/renderDefaultCitys.js");
+/* harmony import */ var _modules_fetchCityData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/fetchCityData */ "./src/modules/fetchCityData.js");
 
 
 (0,_modules_inputModules_renderInputCity__WEBPACK_IMPORTED_MODULE_0__["default"])();
-(0,_modules_renderDefaultCitys__WEBPACK_IMPORTED_MODULE_1__["default"])();
+(0,_modules_fetchCityData__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 /***/ }),
 
@@ -28,10 +28,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var defaultCitys = function defaultCitys() {
-  return "\n        <div class=\"container__top d-flex justify-content-between\">\n            <p class=\"top__name\">CityName</p>\n            <p class=\"top__time\">time</p>\n        </div>\n        <div class=\"container__middle text-center \">\n            <img class=\"middle__forecastImage\" src=\"/public/images/sunny.svg\" alt=\"\">\n            <p class=\"middle__weatherCondition\">WeatherCondition</p>\n        </div>\n        <div class=\"container__bottom d-flex justify-content-between\">\n            <p class=\"bottom__temperature\">temperature</p>\n            <p class=\"bottom__country\">country</p>\n        </div>\n    </div>\n    ";
+var defaultCitys = function defaultCitys(_ref) {
+  var cityName = _ref.cityName,
+    cityTime = _ref.cityTime,
+    cityWeather = _ref.cityWeather,
+    cityTemperature = _ref.cityTemperature,
+    cityCountry = _ref.cityCountry;
+  return "\n        <div class=\"container__top d-flex justify-content-between\">\n            <p class=\"top__name\">".concat(cityName, "</p>\n            <p class=\"top__time\">").concat(cityTime, "</p>\n        </div>\n        <div class=\"container__middle text-center\">\n            <img class=\"middle__forecastImage\" src=\"/public/images/sunny.svg\" alt=\"\">\n            <p class=\"middle__weatherCondition\">").concat(cityWeather, "</p>\n        </div>\n        <div class=\"container__bottom d-flex justify-content-between\">\n            <p class=\"bottom__temperature\">").concat(cityTemperature, "\xB0C</p>\n            <p class=\"bottom__country\">").concat(cityCountry, "</p>\n        </div>\n    </div>\n    ");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (defaultCitys);
+
+/***/ }),
+
+/***/ "./src/modules/fetchCityData.js":
+/*!**************************************!*\
+  !*** ./src/modules/fetchCityData.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _renderDefaultCitys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./renderDefaultCitys */ "./src/modules/renderDefaultCitys.js");
+
+var fetchCityData = function fetchCityData() {
+  fetch('https://api.meteo.lt/v1/places/vilnius/forecasts/long-term').then(function (response) {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  }).then(function (data) {
+    var cityName = data.place.name;
+    var cityTime = data.forecastCreationTimeUtc.split(' ')[1];
+    var cityWeather = data.forecastTimestamps[0].conditionCode;
+    var cityTemperature = data.forecastTimestamps[0].airTemperature;
+    var cityCountry = data.place.country;
+    var cityData = {
+      cityName: cityName,
+      cityTime: cityTime,
+      cityWeather: cityWeather,
+      cityTemperature: cityTemperature,
+      cityCountry: cityCountry
+    };
+    (0,_renderDefaultCitys__WEBPACK_IMPORTED_MODULE_0__["default"])(cityData);
+  })["catch"](function (error) {
+    console.error('Error fetching city data:', error);
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchCityData);
 
 /***/ }),
 
@@ -185,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _defaultCitys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaultCitys */ "./src/modules/defaultCitys.js");
 
-var renderDefaultCitys = function renderDefaultCitys() {
+var renderDefaultCitys = function renderDefaultCitys(data) {
   var containerElement = document.querySelector('.defaultCitys');
   var bootstrapRow = document.createElement('div');
   bootstrapRow.className = 'row gap-2';
@@ -194,7 +239,13 @@ var renderDefaultCitys = function renderDefaultCitys() {
     var bootstrapRowToAdd = document.querySelector('.row.gap-2');
     var defaultCitysContainer = document.createElement('div');
     defaultCitysContainer.className = 'defaultCity__container col-lg-3 col-md-12';
-    defaultCitysContainer.innerHTML = (0,_defaultCitys__WEBPACK_IMPORTED_MODULE_0__["default"])();
+    defaultCitysContainer.innerHTML = (0,_defaultCitys__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      cityName: data.cityName,
+      cityTime: data.cityTime,
+      cityWeather: data.cityWeather,
+      cityTemperature: data.cityTemperature,
+      cityCountry: data.cityCountry
+    });
     bootstrapRowToAdd.appendChild(defaultCitysContainer);
   }
 };
