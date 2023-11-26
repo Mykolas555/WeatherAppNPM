@@ -1,11 +1,11 @@
-const defaultCitys = ({ cityName, cityTime, cityWeather, cityTemperature, cityCountry }) => {
+const defaultCitys = ({ cityName, cityTime, cityImage, cityWeather, cityTemperature, cityCountry }) => {
     return `
         <div class="container__top d-flex justify-content-between">
             <p class="top__name">${cityName}</p>
             <p class="top__time">${cityTime}</p>
         </div>
         <div class="container__middle text-center">
-            <img class="middle__forecastImage" src="/public/images/sunny.svg" alt="">
+            <img class="middle__forecastImage" src="${cityImage}" alt="">
             <p class="middle__weatherCondition">${cityWeather}</p>
         </div>
         <div class="container__bottom d-flex justify-content-between">

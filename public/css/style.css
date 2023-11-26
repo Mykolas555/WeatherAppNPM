@@ -12009,6 +12009,18 @@ body {
   font-family: Inter, sans-serif;
 }
 
+#errorCatchCity {
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  background: red;
+  font-size: 2rem;
+  font-family: Inter, sans-serif;
+  border-radius: 20px;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
 .defaultCitys {
   margin-top: 3rem;
   display: flex;
@@ -12044,7 +12056,7 @@ body {
 }
 .defaultCity__container .container__top .top__time {
   color: var(--light-70, rgba(255, 255, 255, 0.68));
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -12057,7 +12069,7 @@ body {
 }
 .defaultCity__container .container__middle .middle__weatherCondition {
   color: rgba(255, 255, 255, 0.68);
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -12073,7 +12085,7 @@ body {
 }
 .defaultCity__container .container__bottom .bottom__country {
   color: rgba(255, 255, 255, 0.68);
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
