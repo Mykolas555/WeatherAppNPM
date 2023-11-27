@@ -36,9 +36,6 @@ const defaultCityImage = (weatherCode, cityTime) => {
         case 'heavy-snow':
             imageSrc = '/public/images/snow.svg';
             break;
-        default:
-        imageSrc = isDaytime ? '/public/images/dayDefault.svg' : '/public/images/nightDefault.svg';
-            break;
     }
     return imageSrc
 }

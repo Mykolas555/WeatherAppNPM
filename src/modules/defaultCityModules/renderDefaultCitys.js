@@ -8,7 +8,7 @@ const renderDefaultCitys = (cityDataArray) => {
     for (const cityData of cityDataArray) {
         let bootstrapRowToAdd = document.querySelector('.row.gap-2');
         let defaultCitysContainer = document.createElement('div');
-        defaultCitysContainer.className = 'defaultCity__container col-lg-3 col-md-12';
+        defaultCitysContainer.className = 'defaultCity__container col-lg-3 col-md-8';
         defaultCitysContainer.innerHTML = defaultCitys(cityData);
         bootstrapRowToAdd.appendChild(defaultCitysContainer);
     }
