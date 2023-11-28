@@ -2,14 +2,15 @@ import searchCityHtml from "./searchCityHtml";
 import searchCityImage from "./searchCityImages";
 import searchCityErrorDiv from "./searchCityErrorDiv";
 
-const searchCityRender = async () => {
+const searchCityRender = async (cityInput) => {
     let containerElement = document.querySelector('.forecastCity');
     let elementDiv = document.createElement('div');
     elementDiv.className = 'forecastItems';
+    containerElement.innerHTML = ''; 
     containerElement.appendChild(elementDiv);
     const forecastFetchData = [];
     try {
-        const response = await fetch(`https://api.meteo.lt/v1/places/vilnius/forecasts/long-term`);
+        const response = await fetch(`https://api.meteo.lt/v1/places/${cityInput}/forecasts/long-term`);
         if (!response.ok) {
             throw new Error(`Error`);
         }

@@ -1,5 +1,6 @@
 import autocompleteAjax from "./autocompleteAjax";
 import cityInput from "./cityInput";
+import searchCityRender from "../searchCityModules/searchCityRender";
 
 const renderInputCity = async () => {
     const data = await autocompleteAjax();
@@ -16,7 +17,16 @@ const renderInputCity = async () => {
     }
     inputContainer.appendChild(autocompleteContainer);
     inputOfCity.appendChild(inputContainer);
-    
+    const cityInputElement = inputContainer.querySelector('.openCityForm');
+    let isInputComplete = false; 
+    cityInputElement.addEventListener('input', () => {
+        isInputComplete = data.some(city => city.name === cityInputElement.value);
+    });
+    cityInputElement.addEventListener('change', () => {
+        if (isInputComplete) {
+            searchCityRender(cityInputElement.value);
+        }
+    });
 };
 
 export default renderInputCity;
