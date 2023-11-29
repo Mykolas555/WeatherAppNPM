@@ -17,7 +17,7 @@ const searchCityRender = async (cityInput) => {
         }
         containerElement.style.display = 'flex';
         const data = await response.json();
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 10; i++) {
             const forecastDay = data.forecastTimestamps[i].forecastTimeUtc;
             const forecastImage = data.forecastTimestamps[i].conditionCode;
             const forecastTemperature = data.forecastTimestamps[i].airTemperature;

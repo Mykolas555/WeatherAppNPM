@@ -1,6 +1,7 @@
 import autocompleteAjax from "./autocompleteAjax";
 import cityInput from "./cityInput";
 import searchCityRender from "../searchCityModules/searchCityRender";
+import errorInput from "./errorInput";
 
 const renderInputCity = async () => {
     const data = await autocompleteAjax();
