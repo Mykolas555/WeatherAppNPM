@@ -4,6 +4,7 @@ import searchCityErrorDiv from "./searchCityErrorDiv";
 
 const searchCityRender = async (cityInput) => {
     let containerElement = document.querySelector('.forecastCity');
+    containerElement.style.display = 'none';
     let elementDiv = document.createElement('div');
     elementDiv.className = 'forecastItems';
     containerElement.innerHTML = ''; 
@@ -14,6 +15,7 @@ const searchCityRender = async (cityInput) => {
         if (!response.ok) {
             throw new Error(`Error`);
         }
+        containerElement.style.display = 'flex';
         const data = await response.json();
         for (let i = 0; i < 7; i++) {
             const forecastDay = data.forecastTimestamps[i].forecastTimeUtc;
@@ -36,4 +38,4 @@ const searchCityRender = async (cityInput) => {
     }
 };
 
-export default searchCityRender;
+export default searchCityRender

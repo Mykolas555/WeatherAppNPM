@@ -12121,3 +12121,7 @@ body {
           backdrop-filter: blur(40px);
   margin-top: 3rem;
 }
+
+.forecastItems p {
+  padding: 40px 10px 10px 40px;
+}

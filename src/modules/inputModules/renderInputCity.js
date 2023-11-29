@@ -18,15 +18,24 @@ const renderInputCity = async () => {
     inputContainer.appendChild(autocompleteContainer);
     inputOfCity.appendChild(inputContainer);
     const cityInputElement = inputContainer.querySelector('.openCityForm');
-    let isInputComplete = false; 
+    let isInputComplete = false;
+
     cityInputElement.addEventListener('input', () => {
         isInputComplete = data.some(city => city.name === cityInputElement.value);
+        updateDefaultCitysVisibility(isInputComplete);
     });
+
     cityInputElement.addEventListener('change', () => {
         if (isInputComplete) {
             searchCityRender(cityInputElement.value);
         }
     });
+    const updateDefaultCitysVisibility = (isInputComplete) => {
+        let defaultCitysContainer = document.querySelector('.defaultCitys');
+        if (isInputComplete) {
+            defaultCitysContainer.style.display = 'none';
+        }
+    };
 };
 
 export default renderInputCity;

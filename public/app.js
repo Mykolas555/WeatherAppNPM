@@ -356,7 +356,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var renderInputCity = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var data, inputOfCity, inputContainer, autocompleteContainer, i, autocomplete, cityInputElement, isInputComplete;
+    var data, inputOfCity, inputContainer, autocompleteContainer, i, autocomplete, cityInputElement, isInputComplete, updateDefaultCitysVisibility;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -383,13 +383,20 @@ var renderInputCity = /*#__PURE__*/function () {
             isInputComplete = data.some(function (city) {
               return city.name === cityInputElement.value;
             });
+            updateDefaultCitysVisibility(isInputComplete);
           });
           cityInputElement.addEventListener('change', function () {
             if (isInputComplete) {
               (0,_searchCityModules_searchCityRender__WEBPACK_IMPORTED_MODULE_2__["default"])(cityInputElement.value);
             }
           });
-        case 16:
+          updateDefaultCitysVisibility = function updateDefaultCitysVisibility(isInputComplete) {
+            var defaultCitysContainer = document.querySelector('.defaultCitys');
+            if (isInputComplete) {
+              defaultCitysContainer.style.display = 'none';
+            }
+          };
+        case 17:
         case "end":
           return _context.stop();
       }
@@ -540,25 +547,27 @@ var searchCityRender = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           containerElement = document.querySelector('.forecastCity');
+          containerElement.style.display = 'none';
           elementDiv = document.createElement('div');
           elementDiv.className = 'forecastItems';
           containerElement.innerHTML = '';
           containerElement.appendChild(elementDiv);
           forecastFetchData = [];
-          _context.prev = 6;
-          _context.next = 9;
+          _context.prev = 7;
+          _context.next = 10;
           return fetch("https://api.meteo.lt/v1/places/".concat(cityInput, "/forecasts/long-term"));
-        case 9:
+        case 10:
           response = _context.sent;
           if (response.ok) {
-            _context.next = 12;
+            _context.next = 13;
             break;
           }
           throw new Error("Error");
-        case 12:
-          _context.next = 14;
+        case 13:
+          containerElement.style.display = 'flex';
+          _context.next = 16;
           return response.json();
-        case 14:
+        case 16:
           data = _context.sent;
           for (i = 0; i < 7; i++) {
             forecastDay = data.forecastTimestamps[i].forecastTimeUtc;
@@ -575,18 +584,18 @@ var searchCityRender = /*#__PURE__*/function () {
             elementDiv.appendChild(searchDiv);
             searchDiv.innerHTML = (0,_searchCityHtml__WEBPACK_IMPORTED_MODULE_0__["default"])(forecastDay, (0,_searchCityImages__WEBPACK_IMPORTED_MODULE_1__["default"])(forecastImage), forecastTemperature);
           }
-          _context.next = 22;
+          _context.next = 24;
           break;
-        case 18:
-          _context.prev = 18;
-          _context.t0 = _context["catch"](6);
+        case 20:
+          _context.prev = 20;
+          _context.t0 = _context["catch"](7);
           console.error(_context.t0);
           (0,_searchCityErrorDiv__WEBPACK_IMPORTED_MODULE_2__["default"])();
-        case 22:
+        case 24:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[6, 18]]);
+    }, _callee, null, [[7, 20]]);
   }));
   return function searchCityRender(_x) {
     return _ref.apply(this, arguments);
