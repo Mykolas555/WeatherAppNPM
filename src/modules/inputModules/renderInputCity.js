@@ -1,7 +1,7 @@
 import autocompleteAjax from "./autocompleteAjax";
 import cityInput from "./cityInput";
 import searchCityRender from "../searchCityModules/searchCityRender";
-import errorInput from "./errorInput";
+//import errorInput from "./errorInput";
 
 const renderInputCity = async () => {
     const data = await autocompleteAjax();
@@ -20,12 +20,10 @@ const renderInputCity = async () => {
     inputOfCity.appendChild(inputContainer);
     const cityInputElement = inputContainer.querySelector('.openCityForm');
     let isInputComplete = false;
-
     cityInputElement.addEventListener('input', () => {
         isInputComplete = data.some(city => city.name === cityInputElement.value);
         updateDefaultCitysVisibility(isInputComplete);
     });
-
     cityInputElement.addEventListener('change', () => {
         if (isInputComplete) {
             searchCityRender(cityInputElement.value);
@@ -35,7 +33,9 @@ const renderInputCity = async () => {
         let defaultCitysContainer = document.querySelector('.defaultCitys');
         if (isInputComplete) {
             defaultCitysContainer.style.display = 'none';
-        }
+        }//else{
+            //errorInput
+        //}
     };
 };
 
